@@ -19,29 +19,26 @@ function Clock(){
     //즉, Date 객체를 생성하고 이를 변수에 할당하면
     //해당 변수에 저장되는 것은 Date 객체 생성 시점의 시간 정보이다.
 
-    //useEffect는 React Component가 re-render될 때 실행되는 함수
-    //정확히 말하자면 re-rendering되면 Callback으로 전달한
-    //Effect 함수가 실행된다.
-    //해당 함수는 0.5초마다 한번씩 Hours, Minutes State 갱신
-    //State 값이 바뀌므로 re-rendering 요청이 작업 리스트에 들어감.
-    //이후 해당 Interval을 초기화한다.
-    //어떻게보면 일종의 무한 루프라고 봐도 무방하다.
+    //useEffect는 React Component가 re-render될 때
 
-    //처음 랜더링 -> 랜더링 완료 후 useEffect 실행
-    //0.5초마다 Hours, Minutes State 값 갱신
-    //State 값 갱신 후 설정한 Interval은 해체된다.
-
-    //이때 Hour, Minute 정보에 변화가 있으면
-    //해당 Component는 Re-rendering된다.
-    //State 값이 변화하면 Re-render가 발생하는
-    //React의 특성을 활용한 일종의 무한 루프
-
-    //현재 날짜만 return하는 DateTimes component에
-    //지금 Logic을 추가하면 문제 없이 동작을 할까?
-    //바로 시험해보고 싶긴 한디...
-    //시간이 없다. 알바를 가야한다.
-    
-
+    /**
+     * 'useEffect()'는 React Component가 re-rendering될 때마다
+     * Callback으로 전달한 Effect 함수를 실행하는 React Hook이다
+     * 시간 정보를 나타내는 Component가 Rendering이 완료된 뒤
+     * Effect 함수가 실행된다.
+     * setInterval 함수의 Callback으로
+     * Date 객체를 생성하고, Hours, Minutes State에
+     * Date 객체의 메서드 실행 결과를 전달하는 코드가 존재한다
+     * 
+     * setInterval() 함수는 약 0.5초 뒤에 Callback 실행
+     * (Hour, Minutes State에 새로운 시간 정보 전달)
+     * 이후 clearInterval() 함수를 통해 위의 반복 작업을 취소한다
+     * 
+     * state 값이 변경됨에 따라 React Component가 re-rendering된다.
+     * 
+     * 그리고 Component가 re-rendering됐기에
+     * useEffect() Hook은 Callback인 Effect 함수를 실행시킨다...
+     */
     useEffect(() => {
         const ID = setInterval(() => {
             DateObj = new Date();
