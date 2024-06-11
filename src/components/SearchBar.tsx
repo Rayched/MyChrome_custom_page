@@ -1,4 +1,4 @@
-import { HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useState } from "react";
+import { KeyboardEvent, useState } from "react";
 
 function SearchBar(){
     const [Keyword, setKeyword] = useState("");
@@ -11,6 +11,7 @@ function SearchBar(){
     const EnterKeys = (event: KeyboardEvent) => {
         if(event.code === "Enter"){
             console.log(Keyword);
+            setKeyword("");
         }
     }
 
