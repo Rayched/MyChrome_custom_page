@@ -1,4 +1,11 @@
 import Clock from "./Clock";
+import styled from "styled-components";
+
+const Clocks = styled.div`
+    background-color: lightgray;
+    width: 250px;
+    margin: 0 auto;
+`;
 
 function DateTimes(){
     const Times = new Date();
@@ -13,10 +20,14 @@ function DateTimes(){
     const day = Times.getDay();
 
     return (
-        <div>
-            <h4>{Year}년 {Month}월 {date}일 {Days[day]}요일</h4>
-            <Clock />
-        </div>
+        <Clocks>
+            <div>
+                <h4>{Year}년 {Month}월 {date}일 {Days[day]}요일</h4>
+            </div>
+            <div>
+                <Clock />
+            </div>
+        </Clocks>
     );
 }
 
