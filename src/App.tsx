@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import DateTimes from './components/DateTimes';
 import SearchBar from './components/SearchBar';
+import Bookmarks from './components/Bookmarks/Bookmark_Bar';
 
 const MainWrapper = styled.div`
   display: flex;
@@ -16,15 +17,6 @@ const MainItems = styled.div`
   width: 70%;
   height: 100%;
 `;
-const Bookmarks = styled.div`
-  border: 2px solid black;
-  margin: 5px;
-  width: 240px;
-  height: 100%;
-  position: absolute;
-  top: 50px; right: 0px;
-  padding: 10px 30px;
-`;
 
 function App() {
   return (
@@ -33,19 +25,9 @@ function App() {
         <DateTimes />
         <SearchBar />
       </MainItems>
-      <Bookmarks>
-        <h4>북마크바</h4>
-        <div>
-          북마크 추가
-        </div>
-        <div>
-          <div>북마크 1</div>
-          <div>북마크 2</div>
-          <div>북마크 3</div>
-          <div>북마크 4</div>
-          <div>북마크 5</div>
-        </div>
-      </Bookmarks>
+      <div>
+        <Bookmarks />
+      </div>
     </MainWrapper>
   );
 }

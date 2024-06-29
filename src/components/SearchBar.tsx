@@ -8,6 +8,11 @@ const SearchBars = styled.input.attrs(
     }
 )`
     border: 3px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    width: 300px;
+    height: 35px;
+    font-size: 16px;
 `;
 
 function SearchBar(){
@@ -35,7 +40,7 @@ function SearchBar(){
 
     return (
         <div>
-            <input
+            <SearchBars
                 type="text" 
                 placeholder="검색어를 입력해주세요." 
                 onChange={getKeywords}
