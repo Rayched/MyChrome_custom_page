@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import Bookmark_Items from "./Bookmark_Items";
 
 interface BookmarkBar {
     BmkWidth: number
@@ -15,8 +16,8 @@ const Bookmark_Bar = styled.div<BookmarkBar>`
 `;
 
 function Bookmarks(){
-    const [Btns, setBtns] = useState("close");
-    const [BmkWidth, setWidth] = useState(0);
+    const [Btns, setBtns] = useState("open");
+    const [BmkWidth, setWidth] = useState(70);
 
     const BtnClicks = () => {
         if (Btns === "open"){
@@ -33,33 +34,8 @@ function Bookmarks(){
     return (
         <div>
             <Bookmark_Bar BmkWidth={BmkWidth}>
-                <div onClick={BtnClicks}>
-                    {
-                        (Btns === "close") ? "Open" : "Close"
-                    }
-                </div>
-                {
-                    (Btns === "open")
-                    ? (
-                    <div>
-                        <ul>
-                            <li>북1</li>
-                            <li>북2</li>
-                            <li>북3</li>
-                            <li>북4</li>
-                        </ul>
-                    </div>)
-                    : <div>
-                        <hr/>
-                        <button>추가</button>
-                        <ul>
-                            <li>북마크 1</li>
-                            <li>북마크 2</li>
-                            <li>북마크 3</li>
-                            <li>북마크 4</li>
-                        </ul>
-                    </div>
-                }
+                <div onClick={BtnClicks}>{Btns}</div>
+                <Bookmark_Items Bar_is={Btns}/>
             </Bookmark_Bar>
         </div>
     );
